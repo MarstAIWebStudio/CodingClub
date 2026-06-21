@@ -1,238 +1,59 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coding Club | 지원하기</title>
-    <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        :root {
-            --brand-color: #0066ff;
-            --brand-hover: #0052cc;
-            --bg-main: #ffffff;
-            --bg-sub: #f4f7fa;
-            --text-title: #111111;
-            --text-body: #333333;
-            --text-muted: #666666;
-            --border-color: #e5e8eb;
-        }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { 
-            font-family: 'Pretendard', -apple-system, sans-serif; 
-            background-color: var(--bg-sub); 
-            color: var(--text-body); 
-            line-height: 1.6; 
-            letter-spacing: -0.5px;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        /* 상단 헤더 */
-        header {
-            background: var(--bg-main);
-            border-bottom: 1px solid var(--border-color);
-            padding: 40px 20px;
-            text-align: center;
-        }
-        header .back-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 500;
-            margin-bottom: 15px;
-            transition: 0.2s;
-        }
-        header .back-link:hover { color: var(--brand-color); }
-        header h1 { font-size: 2rem; font-weight: 800; color: var(--text-title); margin-bottom: 10px; }
-        header p { font-size: 1.05rem; color: var(--text-muted); }
-
-        /* 신청 폼 컨테이너 */
-        .form-container {
-            max-width: 600px;
-            width: 100%;
-            margin: 40px auto 60px;
-            background: var(--bg-main);
-            padding: 50px 40px;
-            border-radius: 16px;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-        }
-
-        /* 폼 요소 스타일 */
-        .form-group {
-            margin-bottom: 25px;
-        }
-        .form-group label {
-            display: block;
-            font-weight: 600;
-            color: var(--text-title);
-            margin-bottom: 8px;
-            font-size: 0.95rem;
-        }
-        .form-group label span.required {
-            color: #ef4444; /* 필수 입력 표시 (빨간색 별) */
-            margin-left: 4px;
-        }
-        
-        input[type="text"],
-        input[type="tel"],
-        select,
-        textarea {
-            width: 100%;
-            padding: 14px 16px;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            font-family: inherit;
-            font-size: 1rem;
-            color: var(--text-title);
-            background-color: #fafbfc;
-            transition: 0.2s;
-        }
-        input:focus, select:focus, textarea:focus {
-            outline: none;
-            border-color: var(--brand-color);
-            background-color: #ffffff;
-            box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.1);
-        }
-        textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        /* 안내 문구 박스 */
-        .info-box {
-            background: rgba(0, 102, 255, 0.05);
-            border-left: 4px solid var(--brand-color);
-            padding: 15px 20px;
-            border-radius: 0 8px 8px 0;
-            margin-bottom: 30px;
-            font-size: 0.9rem;
-            color: var(--text-muted);
-        }
-
-        /* 제출 버튼 */
-        .submit-btn {
-            width: 100%;
-            background: var(--brand-color);
-            color: white;
-            border: none;
-            padding: 16px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: 0.2s;
-            margin-top: 10px;
-        }
-        .submit-btn:hover {
-            background: var(--brand-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 102, 255, 0.2);
-        }
-
-        /* 반응형 */
-        @media (max-width: 768px) {
-            .form-container { margin: 20px auto; padding: 30px 20px; width: 90%; }
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Club | 지원하기</title>
+    <style>
+        :root {
+            --brand-color: #0066ff;
+            --bg-sub: #f4f7fa;
+        }
+        body { font-family: sans-serif; background-color: var(--bg-sub); padding: 20px; line-height: 1.6; }
+        .form-container { max-width: 600px; margin: 40px auto; background: #fff; padding: 40px; border-radius: 16px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; font-weight: bold; margin-bottom: 8px; }
+        input, select, textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box; }
+        .submit-btn { width: 100%; padding: 15px; background: var(--brand-color); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; }
+    </style>
 </head>
 <body>
 
-    <header>
-        <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> 홈페이지로 돌아가기</a>
-        <h1>Project Application</h1>
-        <p>코딩 클럽에 합류하여 자신만의 세계를 구축해 보세요.</p>
-    </header>
+<div class="form-container">
+    <h1>Project Application</h1>
+    <p>코딩 클럽에 합류하여 자신만의 세계를 구축해 보세요.</p>
+    <form>
+        <div class="form-group">
+            <label>이름 (또는 닉네임) *</label>
+            <input type="text" id="name" placeholder="홍길동" required>
+        </div>
+        <div class="form-group">
+            <label>연락처 또는 이메일 *</label>
+            <input type="text" id="contact" placeholder="010-0000-0000" required>
+        </div>
+        <div class="form-group">
+            <label>현재 코딩 경험 *</label>
+            <select id="experience" required>
+                <option value="" disabled selected>선택해주세요</option>
+                <option value="none">전혀 모름</option>
+                <option value="beginner">기초 수준</option>
+                <option value="no-code">노코드</option>
+                <option value="intermediate">중급 수준</option>
+                <option value="pro">고수 수준</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>지원 동기 (선택)</label>
+            <textarea id="motivation" placeholder="예: 게임을 직접 만들어보고 싶어서 지원했습니다."></textarea>
+        </div>
+        <button type="submit" class="submit-btn">지원서 제출하기</button>
+    </form>
+</div>
 
-    <div class="form-container">
-        <div class="info-box">
-            <i class="fa-solid fa-circle-info" style="color: var(--brand-color); margin-right: 5px;"></i>
-            코딩 경험이 전혀 없어도 괜찮습니다. 제출해주신 정보는 원활한 안내를 위해서만 사용됩니다.
-        </div>
-
-        <form action="#" method="POST">
-            
-            <div class="form-group">
-                <label for="name">이름 (또는 닉네임) <span class="required">*</span></label>
-                <input type="text" id="name" name="name" placeholder="홍길동" required>
-            </div>
-
-            <div class="form-group">
-                <label for="contact">연락처 또는 이메일<span class="required">*</span></label>
-                <input type="text" id="contact" name="contact" placeholder="010-0000-0000 또는 you@example.com" required>
-            </div>
-
-            <div class="form-group">
-                <label for="experience">현재 코딩 경험 <span class="required">*</span></label>
-                <select id="experience" name="experience" required>
-                    <option value="" disabled selected>선택해주세요</option>
-                    <option value="none">전혀 모름 (HTML 글자도 처음 봄)</option>
-                    <option value="beginner">기초 수준 (학교 방과후 등에서 조금 해봄)</option>
-                    <option value="no-code">노코드 (노코드(엔트리 등)로 많이 만들어봄</option>
-                    <option value="intermediate">중급 수준 (간단한 프로젝트 구현 가능)</option>
-                    <option value="pro">고수 수준 (코드로 게임 제작해봄)</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="motivation">지원 동기 및 배우고 싶은 점 (선택)</label>
-                <textarea id="motivation" name="motivation" placeholder="예: 게임을 직접 만들어보고 싶어서 지원했습니다."></textarea>
-            </div>
-
-            <button type="submit" class="submit-btn">지원서 제출하기</button>
-        </form>
-    </div>
 <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
-  import { getDatabase, ref, push, set } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
-
-  // 1. 설정값 (본인의 것으로 유지)
-  const firebaseConfig = {
-    apiKey: "AIzaSyC9mCZ0eY5dOXg2HtU6Ksyc4k8_Vijmtsc",
-    authDomain: "codingclub-join.firebaseapp.com",
-    databaseURL: "https://codingclub-join-default-rtdb.firebaseio.com", // 리얼타임 DB URL 필수
-    projectId: "codingclub-join",
-    storageBucket: "codingclub-join.firebasestorage.app",
-    messagingSenderId: "940643433592",
-    appId: "1:940643433592:web:65a0d2409228ff6996818d"
-  };
-
-  // 2. 초기화
-  const app = initializeApp(firebaseConfig);
-  const db = getDatabase(app);
-
-  // 3. 폼 제출 이벤트 (보통 body 하단에 두는 방식)
-  document.querySelector('form').addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    // 입력 데이터 수집
-    const formData = {
-      name: document.getElementById('name').value,
-      contact: document.getElementById('contact').value,
-      experience: document.getElementById('experience').value,
-      motivation: document.getElementById('motivation').value,
-      appliedAt: new Date().toISOString()
-    };
-
-    // 4. 리얼타임 데이터베이스 'applications' 경로에 데이터 푸시
-    const newAppRef = push(ref(db, 'applications'));
-    set(newAppRef, formData)
-      .then(() => {
-        alert(formData.name + "님, 지원이 완료되었습니다!");
-        this.reset();
-      })
-      .catch((error) => {
-        console.error("데이터 저장 실패:", error);
-        alert("저장에 실패했습니다. 다시 시도해주세요.");
-      });
-  });
+    // 여기에 Firebase 로직을 다시 넣으시면 됩니다.
+    console.log("스크립트가 정상적으로 로드되었습니다.");
 </script>
+
 </body>
 </html>
