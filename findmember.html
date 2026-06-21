@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Coding Club | 지원자 명단 확인</title>
+    <style>
+        body { font-family: sans-serif; padding: 40px; background: #f4f7fa; }
+        .container { max-width: 900px; margin: auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 12px; border-bottom: 1px solid #ddd; text-align: left; }
+        th { background-color: #f8f9fa; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>지원자 명단</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>이름</th>
+                <th>연락처</th>
+                <th>경험</th>
+                <th>지원동기</th>
+            </tr>
+        </thead>
+        <tbody id="applicant-list">
+            </tbody>
+    </table>
+</div>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+    import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyC9mCZ0eY5dOXg2HtU6Ksyc4k8_Vijmtsc",
+        authDomain: "codingclub-join.firebaseapp.com",
+        databaseURL: "https://codingclub-join-default-rtdb.firebaseio.com",
+        projectId: "codingclub-join",
+        storageBucket: "codingclub-join.firebasestorage.app",
+        messagingSenderId: "940643433592",
+        appId: "1:940643433592:web:65a0d2409228ff6996818d"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    // 데이터 가져오기
+    const listRef = ref(db, 'applications');
+    onValue(listRef, (snapshot) => {
+        const data = snapshot.val();
+        const listContainer = document.getElementById('applicant-list');
+        listContainer.innerHTML = ''; // 초기화
+
+        if (data) {
+            Object.values(data).forEach(app => {
+                const row = `<tr>
+                    <td>${app.name}</td>
+                    <td>${app.contact}</td>
+                    <td>${app.experience}</td>
+                    <td>${app.motivation}</td>
+                </tr>`;
+                listContainer.innerHTML += row;
+            });
+        }
+    });
+</script>
+</body>
+</html>
