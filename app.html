@@ -51,8 +51,43 @@
 </div>
 
 <script type="module">
-    // 여기에 Firebase 로직을 다시 넣으시면 됩니다.
-    console.log("스크립트가 정상적으로 로드되었습니다.");
+  // 1. 필요한 모듈들 가져오기 (database 모듈 추가됨)
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+  import { getDatabase, ref, push, set } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
+
+  // 2. Firebase 설정 (databaseURL이 반드시 포함되어야 합니다)
+  const firebaseConfig = {
+    apiKey: "AIzaSyC9mCZ0eY5dOXg2HtU6Ksyc4k8_Vijmtsc",
+    authDomain: "codingclub-join.firebaseapp.com",
+    databaseURL: "https://codingclub-join-default-rtdb.firebaseio.com", 
+    projectId: "codingclub-join",
+    storageBucket: "codingclub-join.firebasestorage.app",
+    messagingSenderId: "940643433592",
+    appId: "1:940643433592:web:65a0d2409228ff6996818d",
+    measurementId: "G-PHB32W40K1"
+  };
+
+  // 3. 초기화
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
+
+  // 4. 지원서 제출 로직 (이 부분은 이전 답변의 로직을 그대로 사용하면 됩니다)
+  document.querySelector('form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const formData = {
+      name: document.getElementById('name').value,
+      contact: document.getElementById('contact').value,
+      experience: document.getElementById('experience').value,
+      motivation: document.getElementById('motivation').value,
+      appliedAt: new Date().toISOString()
+    };
+
+    const newAppRef = push(ref(db, 'applications'));
+    set(newAppRef, formData).then(() => {
+        alert("성공적으로 제출되었습니다!");
+        this.reset();
+    });
+  });
 </script>
 
 </body>
