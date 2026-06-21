@@ -64,16 +64,17 @@
   import { getDatabase, ref, push, set } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
 
   // 2. Firebase 설정 (databaseURL이 반드시 포함되어야 합니다)
-  const firebaseConfig = {
-    apiKey: "AIzaSyC9mCZ0eY5dOXg2HtU6Ksyc4k8_Vijmtsc",
-    authDomain: "codingclub-join.firebaseapp.com",
-    databaseURL: "https://codingclub-join-default-rtdb.asia-southeast1.firebasedatabase.app",
-    projectId: "codingclub-join",
-    storageBucket: "codingclub-join.firebasestorage.app",
-    messagingSenderId: "940643433592",
-    appId: "1:940643433592:web:65a0d2409228ff6996818d",
-    measurementId: "G-PHB32W40K1"
-  };
+const firebaseConfig = {
+  apiKey: "AIzaSyC9mCZ0eY5dOXg2HtU6Ksyc4k8_Vijmtsc",
+  authDomain: "codingclub-join.firebaseapp.com",
+  // 리전 주소가 포함된 필수 설정입니다
+  databaseURL: "https://codingclub-join-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "codingclub-join",
+  storageBucket: "codingclub-join.firebasestorage.app",
+  messagingSenderId: "940643433592",
+  appId: "1:940643433592:web:65a0d2409228ff6996818d",
+  measurementId: "G-PHB32W40K1"
+};
 
   // 3. 초기화
   const app = initializeApp(firebaseConfig);
